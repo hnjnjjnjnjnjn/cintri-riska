@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html> 
+<head>
+    <title>sintri-teknik infomatika-A</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            text-align: center;
+        }
+        .background {
+            background-image: url('unib.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        .menu-container, .biodata-container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            width: 600px;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        }
+        .menu-container.active, .biodata-container.active {
+            display: flex;
+        }
+        .menu a {
+            color: #00f;
+            text-decoration: none;
+            margin: 0 10px;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .menu a:hover {
+            text-decoration: underline;
+        }
+        .photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+        .biodata-content {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .biodata-details {
+            text-align: left;
+        }
+        .info-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #000;
+            padding: 20px;
+            border-radius: 10px;
+            width: 45%;
+            margin-left: 20px;
+            display: none;
+        }
+        .info-container.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <div class="menu-container active" id="menu">
+            <h1>Pilih Biodata</h1>
+            <a href="#" onclick="showBiodata('cintri')">Cintri Kulpa</a>
+            <a href="#" onclick="showBiodata('riska')">Riska Amelia</a>
+        </div>
+        <div class="biodata-container" id="cintri-biodata">
+            <div class="biodata-content">
+                <div class="biodata-details">
+                    <img src="cintri.jpg" alt="Cintri Kulpa" class="photo">
+                    <h1>Cintri Kulpa</h1>
+                    <p>NPM: E1d023001</p>
+                    <p>Kelas: A</p>
+                    <p>Jurusan: Agribisnis</p>
+                    <p>Alamat: Kaur</p>
+                    <p>No Telpon: 087748932587</p>
+                    <div class="menu">
+                        <a href="#" onclick="showInfo('agribisnis')">Sejarah Agribisnis</a> |
+                        <a href="https://www.instagram.com/chinn_zmy?igsh=MWRzeWlwaDF4ZGN3aA==" target="_blank">Instagram</a> |
+                        <a href="#" onclick="returnToMenu()">Kembali ke Menu Utama</a>
+                    </div>
+                </div>
+                <div class="info-container" id="agribisnis-info">
+                    <h2>Sejarah Agribisnis</h2>
+                    <p>Agribisnis adalah sektor ekonomi yang mencakup semua aktivitas yang terlibat dalam produksi, pengolahan, dan distribusi produk pertanian. Bidang ini mencakup berbagai aspek mulai dari pembenihan, budidaya, panen, hingga pemasaran produk akhir. Di Indonesia, agribisnis memiliki peran penting dalam perekonomian dan telah berkembang pesat dengan adanya inovasi dan teknologi baru.</p>
+                </div>
+            </div>
+        </div>
+        <div class="biodata-container" id="riska-biodata">
+            <div class="biodata-content">
+                <div class="biodata-details">
+                    <img src="riska.jpg" alt="Riska Amelia" class="photo">
+                    <h1>Riska Amelia</h1>
+                    <p>NPM: E1d023023</p>
+                    <p>Kelas: A</p>
+                    <p>Jurusan: Agribisnis</p>
+                    <p>Alamat: Lebong</p>
+                    <p>No Telpon: 085764910860</p>
+                    <div class="menu">
+                        <a href="#" onclick="showInfo('kelebihan')">Kelebihan Jurusan Agribisnis</a> |
+                        <a href="https://www.instagram.com/rizqhaalhalim_lftd28?igsh=MWp0Nmk3OGNzdjIzeg==" target="_blank">Instagram</a> |
+                        <a href="#" onclick="returnToMenu()">Kembali ke Menu Utama</a>
+                    </div>
+                </div>
+                <div class="info-container" id="kelebihan-info">
+                    <h2>Kelebihan Jurusan Agribisnis</h2>
+                    <p>Jurusan Agribisnis menawarkan berbagai kelebihan, termasuk peluang karir yang luas di sektor pertanian dan industri terkait, pembelajaran yang mencakup berbagai aspek bisnis dan manajemen pertanian, serta kontribusi yang signifikan terhadap ketahanan pangan dan pengembangan ekonomi pedesaan. Dengan inovasi teknologi yang terus berkembang, lulusan agribisnis memiliki kemampuan untuk menghadapi tantangan dan memanfaatkan peluang di industri pertanian modern.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showBiodata(biodata) {
+            document.getElementById('menu').classList.remove('active');
+            if (biodata === 'cintri') {
+                document.getElementById('cintri-biodata').classList.add('active');
+                document.getElementById('riska-biodata').classList.remove('active');
+                document.getElementById('agribisnis-info').classList.remove('active');
+            } else if (biodata === 'riska') {
+                document.getElementById('cintri-biodata').classList.remove('active');
+                document.getElementById('riska-biodata').classList.add('active');
+                document.getElementById('kelebihan-info').classList.remove('active');
+            }
+        }
+
+        function showInfo(info) {
+            if (info === 'agribisnis') {
+                document.getElementById('agribisnis-info').classList.add('active');
+                document.getElementById('kelebihan-info').classList.remove('active');
+            } else if (info === 'kelebihan') {
+                document.getElementById('agribisnis-info').classList.remove('active');
+                document.getElementById('kelebihan-info').classList.add('active');
+            }
+        }
+
+        function returnToMenu() {
+            document.getElementById('cintri-biodata').classList.remove('active');
+            document.getElementById('riska-biodata').classList.remove('active');
+            document.getElementById('menu').classList.add('active');
+        }
+    </script>
+</body>
+</html>
